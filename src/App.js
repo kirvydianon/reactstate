@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
+  const [todo, setTodo] = useState({
+    id: Math.random() * 1000,
+    completed: false,
+    text: "Asdasd",
+  });
+
+  const add = () => {
+    setCount((prev) => prev + 1);
+  };
+
+  const subtract = () => {
+    setCount((prev) => prev - 1);
+  };
+  console.log(name);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={subtract}>-</button>
+      <span>{count}</span>
+      <button onClick={add}>+</button>
+      <div>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div>
+        <h2>{todo.id}</h2>
+        <h2>{todo.text}</h2>
+      </div>
     </div>
   );
 }
